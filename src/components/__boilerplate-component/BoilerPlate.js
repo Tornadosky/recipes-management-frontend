@@ -1,8 +1,9 @@
-import React from "react";
-import * as S from "./BoilerPlate.styled";
+import React from 'react'
 
 const BoilerPlate = () => {
-  return <S.BoilerPlate>BoilerPlate</S.BoilerPlate>;
-};
+  return (
+    <div>BoilerPlate</div>
+  )
+}
 
-export default BoilerPlate;
+export default BoilerPlate

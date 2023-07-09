@@ -16,7 +16,6 @@ export default {
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
-
 export const Primary = {
   render: () => <BoilerPlate />,
 };
