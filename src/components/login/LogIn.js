@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./SignUp.styled";
+import * as S from "../signup-component/SignUp.styled";
 import {
   Image,
   Row,
@@ -12,9 +12,8 @@ import {
 } from "@nextui-org/react";
 import BurgerImage from "../../assets/burg.png";
 
-function SignUpPage() {
+function LogInPage() {
   const { value, reset, bindings } = useInput("");
-
   const validateEmail = (value) => {
     return value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
   };
@@ -41,20 +40,8 @@ function SignUpPage() {
       <Row css={{ padding: "6rem 12rem 0 12rem" }}>
         <Col>
           <Text b css={{ color: "black", fontSize: "3rem" }}>
-            Sign Up
+            Log In
           </Text>
-          <Spacer y={2} />
-          <Input
-            clearable
-            labelPlaceholder="First Name"
-            style={S.SectionField}
-          />
-          <Spacer y={2} />
-          <Input
-            clearable
-            labelPlaceholder="Last Name"
-            style={S.SectionField}
-          />
           <Spacer y={2} />
           <Input
             {...bindings}
@@ -75,27 +62,14 @@ function SignUpPage() {
           />
           <Spacer y={1} />
           <Button style={S.Button} auto>
-            Sign Up
+            Log In
           </Button>
           <Col>
-            <Text size="$3xl" h3>
-              Cook{" "}
-              <Text color="error" span>
-                whatever
-              </Text>{" "}
-              you want,{" "}
-              <Text color="error" span>
-                whenever
-              </Text>{" "}
-              you want
-            </Text>
             <Text css={{ fontSize: "14px" }}>
-              Work with us and accomodate your schedule as you like. Our work
-              rates have never been higher, this is because we give our empoyees
-              several benefits that they enjoy throughout their journey.
+              Don't have an account yet? Sign up Now!
             </Text>
             <Button style={S.Button} auto>
-              Join Us
+              Sign Up
             </Button>
           </Col>
         </Col>
@@ -114,4 +88,4 @@ function SignUpPage() {
   );
 }
 
-export default SignUpPage;
+export default LogInPage;
