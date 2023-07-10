@@ -1,11 +1,9 @@
-import { Footer } from "./components/Footer";
-import { NavbarComponent } from "./components/Navbar";
+import { CardPopularCategories } from "./components/Card/Card";
 
 function App() {
   return (
     <div className="App">
-      <NavbarComponent />
-      <Footer />
+      <CardPopularCategories />
     </div>
   );
 }
