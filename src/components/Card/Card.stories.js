@@ -1,4 +1,4 @@
-import BoilerPlate from "./BoilerPlate";
+import CardComponent from "./Card";
 
 import React from "react";
 
@@ -7,8 +7,8 @@ export default {
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: "BoilerPlate",
-  component: BoilerPlate,
+  title: "Components/Card",
+  component: CardComponent,
 };
 
 /*
@@ -18,5 +18,5 @@ export default {
  */
 
 export const Primary = {
-  render: () => <BoilerPlate />,
+  render: () => <CardComponent />,
 };

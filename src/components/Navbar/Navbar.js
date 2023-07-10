@@ -1,21 +1,43 @@
 import React from "react";
+import { Navbar, Text, Button, Link } from "@nextui-org/react";
 import * as S from "./Navbar.styled";
+import { BsHeartFill } from "react-icons/bs";
 
-const Navbar = ({ isSignedUp, title }) => {
+const NavbarComponent = ({ isSignedUp, title }) => {
   return (
-    <S.Navbar_Wrap>
-      <S.Navbar_Body>
-        <S.Navbar_Title>{title}</S.Navbar_Title>
-        <S.Navbar_Links>
-          <S.Navbar_Link>Home</S.Navbar_Link>
-          <S.Navbar_Link>Home</S.Navbar_Link>
-          <S.Navbar_Link>Home</S.Navbar_Link>
-          <S.Navbar_Link>Home</S.Navbar_Link>
-          <S.Navbar_Link>{!isSignedUp ? "Login" : "UserName"}</S.Navbar_Link>
-        </S.Navbar_Links>
-      </S.Navbar_Body>
-    </S.Navbar_Wrap>
+    <Navbar css={S.NavbarStyles} variant="static">
+      <Navbar.Brand>
+        <Text b css={S.NavbarBrandStyles}>
+          <i>Recipe List</i>
+        </Text>
+      </Navbar.Brand>
+      <Navbar.Content>
+        <Navbar.Link css={S.NavbarItemStyles}>Home</Navbar.Link>
+        <Navbar.Link css={S.NavbarItemStyles}>Category</Navbar.Link>
+        <Navbar.Link css={S.NavbarItemStyles}>Food Type</Navbar.Link>
+        <Navbar.Item>
+          <Button auto light size="lg" as={Link} href="#">
+            <BsHeartFill />
+          </Button>
+        </Navbar.Item>
+        <Navbar.Item>
+          {isSignedUp ? (
+            "UserName"
+          ) : (
+            <Button
+              auto
+              color={"error"}
+              as={Link}
+              href="#"
+              css={{ fontSize: "1rem" }}
+            >
+              Log in
+            </Button>
+          )}
+        </Navbar.Item>
+      </Navbar.Content>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default NavbarComponent;

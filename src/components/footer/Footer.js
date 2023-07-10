@@ -1,16 +1,18 @@
 import React from "react";
+import { Navbar } from "@nextui-org/react";
 import * as S from "./Footer.styled";
 
-const FooterComponent = (props) => {
+const Footer = () => {
   return (
-    <S.Footer_Wrap>
-      <S.Footer_Title> Recipe list</S.Footer_Title>
-      <S.Footer_Links>
-        <S.Privacy_Link>Privacy Policy</S.Privacy_Link>
-        <S.AboutUs_Link>About Us</S.AboutUs_Link>
-        <S.ContactUs_Link>Contact Us</S.ContactUs_Link>
-      </S.Footer_Links>
-    </S.Footer_Wrap>
+    <Navbar css={S.FooterWrapper}>
+      <Navbar.Brand css={S.FooterProviderStyles}> Recipe list</Navbar.Brand>
+      <Navbar.Content hideIn="xs" css={S.LinkWrappStyle}>
+        <Navbar.Link href="#">Privacy Policy</Navbar.Link>
+        <Navbar.Link href="#">About Us</Navbar.Link>
+        <Navbar.Link href="#">Contact Us</Navbar.Link>
+      </Navbar.Content>
+    </Navbar>
   );
 };
-export default FooterComponent;
+
+export default Footer;

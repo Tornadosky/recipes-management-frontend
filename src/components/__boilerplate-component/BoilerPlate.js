@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const BoilerPlate = () => {
-  return (
-    <div>BoilerPlate</div>
-  )
-}
+  return <div>BoilerPlate</div>;
+};
 
-export default BoilerPlate
+export default BoilerPlate;

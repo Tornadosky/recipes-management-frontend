@@ -1,12 +1,12 @@
-import FooterComponent from "./Footer";
+import Footer from "./Footer";
 
 import React from "react";
 
 export default {
-  title: "FooterComponent",
-  component: FooterComponent,
+  title: "Components/Footer",
+  component: Footer,
 };
 
 export const Primary = {
-  render: () => <FooterComponent />,
+  render: () => <Footer />,
 };

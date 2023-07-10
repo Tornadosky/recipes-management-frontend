@@ -1,7 +1,11 @@
+import { Footer } from "./components/Footer";
+import { NavbarComponent } from "./components/Navbar";
+
 function App() {
   return (
     <div className="App">
-      Hello
+      <NavbarComponent />
+      <Footer />
     </div>
   );
 }
