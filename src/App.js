@@ -1,9 +1,9 @@
-import CardComponent from "./components/Card/Card";
+import { CardPopularCategories } from "./components/Card/Card";
 
 function App() {
   return (
     <div className="App">
-      <CardComponent />
+      <CardPopularCategories />
     </div>
   );
 }
