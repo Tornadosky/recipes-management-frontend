@@ -10,7 +10,7 @@ import {
   Spacer,
   Button,
 } from "@nextui-org/react";
-import BurgerImage from "../../assets/BurgerSignUp.png";
+import BurgerImage from "../../assets/burg.png";
 
 function SignUpPage() {
   const { value, reset, bindings } = useInput("");
@@ -33,47 +33,48 @@ function SignUpPage() {
   }, [value]);
   return (
     <div style={S.SignUpWrapper}>
-      <Row css={{ padding: "10rem 12rem 0 12rem" }}>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Open+Sans:wght@300&family=Poppins&family=Praise&display=swap');
+      </style>
+      <text style={S.Header}>Recipe List</text>
+      <Row css={{ padding: "6rem 12rem 0 12rem" }}>
         <Col>
           <Text b css={{ color: "black", fontSize: "3rem" }}>
             Sign Up
           </Text>
-          <Spacer y={1.5} />
+          <Spacer y={2} />
+          <Input
+            clearable
+            labelPlaceholder="First Name"
+            style={S.SectionField}
+          />
+          <Spacer y={2} />
+          <Input
+            clearable
+            labelPlaceholder="Last Name"
+            style={S.SectionField}
+          />
+          <Spacer y={2} />
           <Input
             {...bindings}
             clearable
-            bordered
-            color="error"
-            shadow={false}
             onClearClick={reset}
             helperColor={helper.color}
             helperText={helper.text}
             type="email"
             labelPlaceholder="Email"
-            status="error"
-            width="300px"
-            size="lg"
-            css={{
-              borderRadius: "0",
-              color: "#F72D57",
-            }}
+            style={S.SectionField}
           />
-          <Spacer y={1.6} />
+          <Spacer y={2} />
           <Input
+            clearable
             type="password"
             labelPlaceholder="Password"
-            status="error"
-            width="300px"
-            size="lg"
-            bordered
+            style={S.SectionField}
           />
           <Spacer y={1} />
-          <Button
-            shadow
-            color="error"
-            auto
-            css={{ height: "40px", width: "100px" }}
-          >
+          <Button style={S.Button} auto>
             Sign Up
           </Button>
           <Col>
@@ -93,27 +94,19 @@ function SignUpPage() {
               rates have never been higher, this is because we give our empoyees
               several benefits that they enjoy throughout their journey.
             </Text>
-            <Button
-              shadow
-              color="error"
-              auto
-              css={{ height: "40px", width: "100px" }}
-            >
+            <Button style={S.Button} auto>
               Join Us
             </Button>
           </Col>
         </Col>
         <Col>
           <Image
-            width={530}
-            height={300}
             src={BurgerImage}
+            style={S.Image}
+            width={530}
+            height={400}
             alt="Default Image"
             objectFit="cover"
-            css={{
-              position: "absolute",
-              zIndex: "1",
-            }}
           />
         </Col>
       </Row>
