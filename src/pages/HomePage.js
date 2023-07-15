@@ -1,7 +1,8 @@
 import React from "react";
-import Footer from "../components/footer-component/Footer";
+import Footer from "../components/Footer/Footer";
 import TextImage from "../components/TextImage/TextImage";
 import StakeImage from "../assets/food_home_page.png";
+import Card from "../components/Card/Card";
 import { Col } from "@nextui-org/react";
 
 const Home = () => {
@@ -13,6 +14,13 @@ const Home = () => {
         isImageFirst={false}
         image={StakeImage}
       ></TextImage>
+      {/* this divition below is to be deleted once the carousel is ready */}
+      <div style={{ display: "flex", marginTop: "2rem" }}>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
 
       <Footer isWithImage={true} />
     </Col>

@@ -12,11 +12,17 @@ const NavbarComponent = ({ isSignedUp, title }) => {
         </Text>
       </Navbar.Brand>
       <Navbar.Content>
-        <Navbar.Link css={S.NavbarItemStyles}>Home</Navbar.Link>
-        <Navbar.Link css={S.NavbarItemStyles}>Category</Navbar.Link>
-        <Navbar.Link css={S.NavbarItemStyles}>Food Type</Navbar.Link>
+        <Navbar.Link href="/" css={S.NavbarItemStyles}>
+          Home
+        </Navbar.Link>
+        <Navbar.Link href="/categories" css={S.NavbarItemStyles}>
+          Category
+        </Navbar.Link>
+        <Navbar.Link href="/foodtype" css={S.NavbarItemStyles}>
+          Food Type
+        </Navbar.Link>
         <Navbar.Item>
-          <Button auto light size="lg" as={Link} href="#">
+          <Button auto light size="lg" as={Link} href="/favorites">
             <BsHeartFill />
           </Button>
         </Navbar.Item>
@@ -28,7 +34,7 @@ const NavbarComponent = ({ isSignedUp, title }) => {
               auto
               color={"error"}
               as={Link}
-              href="#"
+              href="/login"
               css={{ fontSize: "1rem" }}
             >
               Log in
