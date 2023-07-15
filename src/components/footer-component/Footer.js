@@ -12,7 +12,7 @@ const Footer = ({ image, title, text, isWithImage }) => {
           <TextImage
             image={BurgerImg}
             isImageFirst={true}
-            title="Don's miss out on your favorite food"
+            title={"Don't miss out on your favorite food"}
             text="Sign up now to enjoy your favourite food anywhere, anytime. It is quick, easy and accessible to anyone of any age. Free of charge, taste now is the solution to your every day foods."
           />
         </>
