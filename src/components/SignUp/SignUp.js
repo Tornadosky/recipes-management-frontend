@@ -37,11 +37,7 @@ function SignUpPage() {
         @import
         url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Open+Sans:wght@300&family=Poppins&family=Praise&display=swap');
       </style>
-      <text>
-        <a style={S.Header} href="/">
-          Recipe List
-        </a>
-      </text>
+      <text style={S.Header}>Recipe List</text>
       <Row css={{ padding: "6rem 12rem 0 12rem" }}>
         <Col>
           <Text b css={{ color: "black", fontSize: "3rem" }}>

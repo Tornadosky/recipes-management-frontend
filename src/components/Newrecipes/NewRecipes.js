@@ -1,62 +1,365 @@
-import React from "react";
-import { Text, Row, Col, Button, Card } from "@nextui-org/react";
+import React, { useState, useMemo } from "react";
+import {
+  Text,
+  Row,
+  Col,
+  Button,
+  Card,
+  Input,
+  Dropdown,
+} from "@nextui-org/react";
 import { MdCloudUpload } from "react-icons/md";
 import PlaceholderImage from "../../assets/placeholder-image.jpg";
+import * as S from "./NewRecipes.styled";
+import { BsPlus } from "react-icons/bs";
 
 const NewRecipes = () => {
+  // image upload
+  const [image, setImage] = useState(PlaceholderImage);
+  const handleImageUpload = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
+  const [category, setCategory] = useState(new Set(["Select one.."]));
+  const [foodType, setFoodType] = useState(new Set(["Select one.."]));
+  const [portion, setPortion] = useState(new Set(["Select one.."]));
+
+  const selectedCategoryValue = useMemo(
+    () => Array.from(category).join(", ").replaceAll("_", " "),
+    [category]
+  );
+  const selectedFoodTypeValue = useMemo(
+    () => Array.from(foodType).join(", ").replaceAll("_", " "),
+    [foodType]
+  );
+  const selectedPortionTypeValue = useMemo(
+    () => Array.from(portion).join(", ").replaceAll("_", " "),
+    [portion]
+  );
+
+  //for adding ingredients and instructions
+  const [ingredients, setIngredients] = useState("");
+  const [addIngredients, setAddIngredients] = useState([]);
+
+  const handleIngredientsChange = (e) => {
+    setIngredients(e.target.value);
+  };
+
+  const handleAddIngredientsButton = () => {
+    if (ingredients !== "") {
+      setAddIngredients([...addIngredients, ingredients]);
+      setIngredients("");
+    }
+  };
+
+  // add amount
+  const [amount, setAmount] = useState("");
+  const [addAmount, setAddAmount] = useState([]);
+
+  const handleAddAmountChange = (e) => {
+    setAmount(e.target.value);
+  };
+
+  const handleAddAmount = () => {
+    setAddAmount([...addAmount, amount]);
+    setIngredients("");
+  };
+
+  //add instructions
+  const [instruction, setInstruction] = useState("");
+  const [addInstruction, setAddInstruction] = useState([]);
+
+  const handleInstructionChange = (e) => {
+    setInstruction(e.target.value);
+  };
+
+  const handleAddInstruction = () => {
+    if (instruction !== "") {
+      setAddInstruction([...addInstruction, instruction]);
+      setInstruction("");
+    }
+  };
+
   return (
-    <div>
-      <Row>
-        <Text size="$3xl" h3>
-          Add new{" "}
-          <Text color="error" span>
-            Recipe
+    <Row justify="center">
+      <Col css={S.NewRecipesWrapper}>
+        <Row justify="center">
+          <Text size="$3xl" h3>
+            Add new{" "}
+            <Text color="error" span>
+              Recipe
+            </Text>
           </Text>
-        </Text>
-      </Row>
-      <Row>
-        <Col>
-          <Card css={{ w: "350px", h: "350px" }}>
-            <Card.Body css={{ p: 0 }}>
-              <Card.Image
-                src={PlaceholderImage}
-                width="100%"
-                height="100%"
-                objectFit="cover"
-                alt="Card example background"
+        </Row>
+        <Row>
+          <Col>
+            <Card css={{ w: "300px", h: "300px" }}>
+              <Card.Body css={{ p: 0 }}>
+                <Card.Image
+                  src={image}
+                  width="100%"
+                  height="100%"
+                  objectFit="cover"
+                  alt="Card example background"
+                />
+              </Card.Body>
+              <Card.Footer isBlurred css={S.FooterBlur}>
+                <Row justify="center">
+                  <Button
+                    flat
+                    auto
+                    rounded
+                    color="error"
+                    onPress={() => {
+                      document.querySelector("#image-upload").click();
+                    }}
+                  >
+                    <Text
+                      css={{ color: "inherit" }}
+                      size={10}
+                      weight="bold"
+                      transform="uppercase"
+                    >
+                      <MdCloudUpload
+                        style={{
+                          fontSize: "12px",
+                          marginRight: "0.5rem",
+                          paddingTop: "10px",
+                        }}
+                      />
+                      Upload image
+                    </Text>
+                  </Button>
+                  <input
+                    type="file"
+                    id="image-upload"
+                    accept=".jpg,.jpeg,.png,.gif"
+                    style={{ display: "none" }}
+                    onChange={handleImageUpload}
+                  />
+                </Row>
+              </Card.Footer>
+            </Card>
+          </Col>
+          <Col>
+            <Row>
+              <Text h1 css={{ fontSize: "16px" }}>
+                Recipe Title
+              </Text>
+            </Row>
+            <Row>
+              <Input
+                size="xl"
+                color="error"
+                placeholder="Placeholder text"
+                css={{ width: "550px", height: "40px" }}
               />
-            </Card.Body>
-            <Card.Footer
-              isBlurred
-              css={{
-                position: "absolute",
-                bgBlur: "#ffffff66",
-                borderTop:
-                  "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-                bottom: 0,
-                zIndex: 1,
-                width: "100%",
+            </Row>
+            <Row css={{ marginTop: "1rem" }}>
+              <Col css={{ marginRight: "1rem" }}>
+                <label for="" style={{ fontSize: "14px", color: "#F31260" }}>
+                  Category
+                </label>
+                <Dropdown>
+                  <Dropdown.Button flat color="error" css={S.RecipeDropdown}>
+                    {selectedCategoryValue}
+                  </Dropdown.Button>
+
+                  <Dropdown.Menu
+                    aria-label="Single selection actions"
+                    color="secondary"
+                    disallowEmptySelection
+                    selectionMode="single"
+                    selectedKeys={category}
+                    onSelectionChange={setCategory}
+                  >
+                    <Dropdown.Item key="text">Text</Dropdown.Item>
+                    <Dropdown.Item key="text">Text</Dropdown.Item>
+                    <Dropdown.Item key="date">Date</Dropdown.Item>
+                    <Dropdown.Item key="single_date">Single Date</Dropdown.Item>
+                    <Dropdown.Item key="iteration">Iteration</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Col>
+              <Col>
+                <label style={{ fontSize: "14px", color: "#F31260" }}>
+                  Food Type
+                </label>
+                <Dropdown>
+                  <Dropdown.Button flat color="error" css={S.RecipeDropdown}>
+                    {selectedFoodTypeValue}
+                  </Dropdown.Button>
+
+                  <Dropdown.Menu
+                    aria-label="Single selection actions"
+                    color="secondary"
+                    disallowEmptySelection
+                    selectionMode="single"
+                    selectedKeys={foodType}
+                    onSelectionChange={setFoodType}
+                  >
+                    <Dropdown.Item key="text">Text</Dropdown.Item>
+                    <Dropdown.Item key="number">Number</Dropdown.Item>
+                    <Dropdown.Item key="date">Date</Dropdown.Item>
+                    <Dropdown.Item key="single_date">Single Date</Dropdown.Item>
+                    <Dropdown.Item key="iteration">Iteration</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Col>
+            </Row>
+            <Row css={{ marginTop: "1rem" }}>
+              <Col css={{ marginRight: "1rem" }}>
+                <label style={{ fontSize: "14px", color: "#F31260" }}>
+                  Portion
+                </label>
+                <Dropdown>
+                  <Dropdown.Button
+                    flat
+                    color="error"
+                    css={S.RecipeDropdown}
+                    containerCss={{ display: "block", textAlign: "start" }}
+                  >
+                    {selectedPortionTypeValue}
+                  </Dropdown.Button>
+
+                  <Dropdown.Menu
+                    aria-label="Single selection actions"
+                    color="secondary"
+                    disallowEmptySelection
+                    selectionMode="single"
+                    selectedKeys={portion}
+                    onSelectionChange={setPortion}
+                  >
+                    <Dropdown.Item key="text">Text</Dropdown.Item>
+                    <Dropdown.Item key="number">Number</Dropdown.Item>
+                    <Dropdown.Item key="date">Date</Dropdown.Item>
+                    <Dropdown.Item key="single_date">Single Date</Dropdown.Item>
+                    <Dropdown.Item key="iteration">Iteration</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Col>
+              <Col>
+                <Input
+                  width="265px"
+                  type="number"
+                  label="Time(min)"
+                  status="error"
+                  css={{ m: "0.3rem 0 0 0" }}
+                />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        <Col css={{ marginTop: "5rem" }} justify="center">
+          <Row>
+            <Text>Ingredients</Text>
+          </Row>
+          <Row css={{ display: "flex", justifyContent: "space-between" }}>
+            <Col>
+              <Input
+                size="md"
+                placeholder="Placeholder text"
+                css={{ width: "589px", marginRight: "2rem" }}
+                type="text"
+                value={ingredients}
+                onChange={handleIngredientsChange}
+              />
+            </Col>
+            <Col>
+              <Input
+                size="md"
+                placeholder="Amount"
+                css={{ width: "126px" }}
+                type="text"
+                value={amount}
+                onChange={handleAddAmountChange}
+              />
+            </Col>
+            <Col>
+              <Button
+                auto
+                color="error"
+                css={{ w: "40px", marginLeft: "-3rem" }}
+                onClick={() => {
+                  handleAddIngredientsButton();
+                  handleAddAmount();
+                }}
+              >
+                <BsPlus style={{ fontSize: "25px" }} />
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <ol
+              style={{
+                width: "77.5%",
+                height: "auto",
+                backgroundColor: "#F1F3F5",
+                borderRadius: "10px",
               }}
             >
-              <Row justify="center">
-                <Button flat auto rounded color="error">
-                  <Text
-                    css={{ color: "inherit" }}
-                    size={12}
-                    weight="bold"
-                    transform="uppercase"
-                  >
-                    <MdCloudUpload />
-                    Upload image
-                  </Text>
-                </Button>
-              </Row>
-            </Card.Footer>
-          </Card>
+              {addIngredients.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ol>
+          </Row>
+          <Row>
+            <Text>Instruction</Text>
+          </Row>
+          <Row>
+            <Col>
+              <Input
+                size="md"
+                placeholder="Placeholder text"
+                css={{ width: "750px", marginRight: "2rem" }}
+                type="text"
+                value={instruction}
+                onChange={handleInstructionChange}
+              />
+            </Col>
+
+            <Col>
+              <Button
+                auto
+                color="error"
+                css={{ w: "40px" }}
+                onClick={handleAddInstruction}
+              >
+                <BsPlus style={{ fontSize: "25px" }} />
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <ol
+              style={{
+                width: "77.5%",
+                height: "auto",
+                backgroundColor: "#F1F3F5",
+                borderRadius: "10px",
+              }}
+            >
+              {addInstruction.map((instruction, index) => (
+                <li key={index}>{instruction}</li>
+              ))}
+            </ol>
+          </Row>
         </Col>
-        <Col></Col>
-      </Row>
-    </div>
+        <Row>
+          <Button
+            rounded
+            size="auto"
+            color="error"
+            css={{ w: "150px", h: "50px", marginTop: "10rem" }}
+          >
+            Add Recipe
+          </Button>
+        </Row>
+      </Col>
+    </Row>
   );
 };
 
