@@ -1,9 +1,9 @@
 import React from "react";
 import Footer from "../components/Footer/Footer";
+import CardCarousel from "../components/CardCarousel/CardCarousel";
 import TextImage from "../components/TextImage/TextImage";
 import StakeImage from "../assets/food_home_page.png";
-import Card from "../components/Card/Card";
-import { Col } from "@nextui-org/react";
+import { Col, Row } from "@nextui-org/react";
 
 const Home = () => {
   return (
@@ -14,13 +14,12 @@ const Home = () => {
         isImageFirst={false}
         image={StakeImage}
       ></TextImage>
-      {/* this divition below is to be deleted once the carousel is ready */}
-      <div style={{ display: "flex", marginTop: "2rem" }}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
+      <Row>
+        <h3 style={{ margin: "6rem auto 2rem auto", fontSize: "48px" }}>
+          Our Popular <span style={{ color: "red" }}>Categories</span>
+        </h3>
+      </Row>
+      <CardCarousel />
 
       <Footer isWithImage={true} />
     </Col>
