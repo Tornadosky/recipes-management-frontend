@@ -22,3 +22,9 @@ export const RecipeDropdown = {
   textAlign: "start",
   marginTop: "0.5rem",
 };
+
+export const OrderedListStyles = {
+  width: "100%",
+  height: "auto",
+  backgroundColor: "lightgrey",
+};

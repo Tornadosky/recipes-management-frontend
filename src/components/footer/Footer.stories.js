@@ -8,5 +8,5 @@ export default {
 };
 
 export const Primary = {
-  render: () => <Footer isWithImage={true} />,
+  render: () => <Footer />,
 };

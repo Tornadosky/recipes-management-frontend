@@ -36,11 +36,7 @@ function LogInPage() {
         @import
         url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Open+Sans:wght@300&family=Poppins&family=Praise&display=swap');
       </style>
-      <text>
-        <a href="/" style={S.Header}>
-          Recipe List
-        </a>
-      </text>
+      <text style={S.Header}>Recipe List</text>
       <Row css={{ padding: "6rem 12rem 0 12rem" }}>
         <Col>
           <Text b css={{ color: "black", fontSize: "3rem" }}>
@@ -73,12 +69,7 @@ function LogInPage() {
               Don't have an account yet? Sign up Now!
             </Text>
             <Button style={S.Button} auto>
-              <a
-                href="/signup"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Sign Up
-              </a>
+              Sign Up
             </Button>
           </Col>
         </Col>
