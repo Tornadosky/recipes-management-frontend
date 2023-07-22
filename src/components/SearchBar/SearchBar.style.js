@@ -3,6 +3,7 @@ export const SearchBox = {
   height: "50px",
   borderRadius: "25px",
   border: "0",
+  margin: "30px",
 };
 
 export const SearchInput = {

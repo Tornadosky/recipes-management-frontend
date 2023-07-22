@@ -1,12 +1,12 @@
-import CardComponent from "./CardCarousel";
+import CardCarousel from "./CardCarousel";
 
 import React from "react";
 
 export default {
   title: "Components/CardCarousel",
-  component: CardComponent,
+  component: CardCarousel,
 };
 
 export const Primary = {
-  render: () => <CardComponent />,
+  render: () => <CardCarousel />,
 };

@@ -1,9 +1,9 @@
-import UsernameDropdown from "./components/UsernameDropdown/UsernameDropdown";
+import CategoryPage from "./pages/Category";
 
 function App() {
   return (
     <div className="App">
-      <UsernameDropdown />
+      <CategoryPage />
     </div>
   );
 }

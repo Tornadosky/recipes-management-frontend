@@ -9,7 +9,7 @@ const SearchBar = () => {
         @import
         url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Open+Sans:wght@300&family=Poppins&family=Praise&display=swap');
       </style>
-      <input placeholder="Seach a recipe. . ." style={S.SearchInput} />
+      <input placeholder="  Seach a recipe. . ." style={S.SearchInput} />
       <IoSearch style={S.SearchIcon} />
     </div>
   );
