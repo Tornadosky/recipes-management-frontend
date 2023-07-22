@@ -6,7 +6,7 @@ export const NavbarStyles = {
 
 export const NavbarBrandStyles = {
   fontFamily: "'Praise', cursive",
-  fontSize: "2.5rem",
+  fontSize: "48px",
   color: "#F72D57",
 };
 

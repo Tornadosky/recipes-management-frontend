@@ -2,6 +2,7 @@ export const Header = {
   fontFamily: "Praise, sans-serif",
   fontSize: "48px",
   color: "#F72D57",
+  textDecoration: "none",
 };
 
 export const SignUpWrapper = {

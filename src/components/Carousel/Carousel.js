@@ -23,70 +23,64 @@ export const Carousel = ({ isBurger, isLunch, isPizza, isSalad }) => {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
+    autoplay: true,
     slidesToScroll: 2,
   };
 
   return (
-    <div style={S.CarouselContainerStyles}>
-      <Slider {...settings}>
-        {cardData.map((card, index) => (
-          <div>
-            <Badge
-              color="error"
-              content={card.rating}
-              size="lg"
-              css={{ marginRight: "1rem" }}
-              key={index}
-            >
-              <Card css={S.CardStyles}>
-                <Card.Header></Card.Header>
-                <Card.Body css={{ p: 0 }}>
-                  <Card.Image
-                    src={card.image}
-                    width="180px"
-                    height="170px"
-                    objectFit="fit"
-                    alt="Card example background"
-                  />
-                </Card.Body>
-                <Card.Footer>
-                  <Row>
-                    <Col css={S.CardColStyles}>
+    <Slider style={S.CarouselContainerStyles} {...settings}>
+      {cardData.map((card, index) => (
+        <div>
+          <Badge
+            color="error"
+            content={card.rating}
+            size="lg"
+            css={{ marginRight: "1rem" }}
+            key={index}
+          >
+            <Card css={S.CardStyles}>
+              <Card.Header></Card.Header>
+              <Card.Body css={{ p: 0 }}>
+                <Card.Image
+                  src={card.image}
+                  width="180px"
+                  height="170px"
+                  objectFit="fit"
+                  alt="Card example background"
+                />
+              </Card.Body>
+              <Card.Footer>
+                <Row>
+                  <Col css={S.CardColStyles}>
+                    <Text h6 color="#000" size={12} css={{ marginBottom: "0" }}>
+                      {card.name}
+                    </Text>
+
+                    <Text color="#000" size={12} css={{ marginBottom: "0" }}>
+                      {card.description}
+                    </Text>
+
+                    <Text color="#000" size={12}>
+                      {card.price}
+                    </Text>
+                    <Button color="error" auto size={"sm"}>
                       <Text
-                        h6
-                        color="#000"
+                        css={{ color: "#FFFFFF" }}
                         size={12}
-                        css={{ marginBottom: "0" }}
+                        weight="bold"
+                        transform="uppercase"
                       >
-                        {card.name}
+                        Add to cart
                       </Text>
-
-                      <Text color="#000" size={12} css={{ marginBottom: "0" }}>
-                        {card.description}
-                      </Text>
-
-                      <Text color="#000" size={12}>
-                        {card.price}
-                      </Text>
-                      <Button color="error" auto size={"sm"}>
-                        <Text
-                          css={{ color: "#FFFFFF" }}
-                          size={12}
-                          weight="bold"
-                          transform="uppercase"
-                        >
-                          Add to cart
-                        </Text>
-                      </Button>
-                    </Col>
-                  </Row>
-                </Card.Footer>
-              </Card>
-            </Badge>
-          </div>
-        ))}
-      </Slider>
-    </div>
+                    </Button>
+                  </Col>
+                </Row>
+              </Card.Footer>
+            </Card>
+          </Badge>
+        </div>
+      ))}
+    </Slider>
   );
 };
 

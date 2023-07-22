@@ -4,7 +4,7 @@ import * as S from "./TextImage.styled";
 
 const TextImage = ({ text, image, isImageFirst, title }) => {
   return (
-    <>
+    <Row css={{ overflow: "visible" }}>
       {isImageFirst ? (
         <>
           <Row css={S.TextImageStyles}>
@@ -12,7 +12,6 @@ const TextImage = ({ text, image, isImageFirst, title }) => {
               css={{
                 ...S.ImageStyles,
                 transform: "scale(1.4)",
-                marginTop: "-50px",
               }}
               width={630}
               height={420}
@@ -44,7 +43,7 @@ const TextImage = ({ text, image, isImageFirst, title }) => {
           </Row>
         </>
       )}
-    </>
+    </Row>
   );
 };
 

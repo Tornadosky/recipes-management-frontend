@@ -7,5 +7,5 @@ export default {
 };
 
 export const Primary = {
-  render: () => <TextImage />,
+  render: () => <TextImage isImageFirst={true} />,
 };
