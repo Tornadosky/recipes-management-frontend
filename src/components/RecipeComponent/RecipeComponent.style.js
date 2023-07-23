@@ -2,6 +2,8 @@ export const Container = {
   width: "533px",
   height: "573px",
   fontFamily: "Poppins, sans-serif",
+  margin: "35px",
+  display: "inline-block",
 };
 export const Image = {
   width: "533px",
