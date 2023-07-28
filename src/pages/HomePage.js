@@ -7,7 +7,7 @@ import { Col, Row } from "@nextui-org/react";
 
 const Home = () => {
   return (
-    <Col data-testid="home">
+    <Col>
       <TextImage
         text="We deliver the food of your choice wherever, whenever. Select your food from only the top restaurants in the area, and get it in a flash. Download the app now to discover more."
         title="Experience Cooking like no other"
@@ -19,9 +19,9 @@ const Home = () => {
           Our Popular <span style={{ color: "red" }}>Categories</span>
         </h3>
       </Row>
-      <CardCarousel data-testid="carousel" />
+      <CardCarousel />
 
-      <Footer isWithImage={true} data-testid="footer" />
+      <Footer isWithImage={true} />
     </Col>
   );
 };

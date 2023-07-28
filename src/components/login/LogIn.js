@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "../SignUp/SignUp.styled";
 import {
   Image,
@@ -12,8 +13,25 @@ import {
 } from "@nextui-org/react";
 import BurgerImage from "../../assets/burg.png";
 
-function LogInPage() {
+function LogInPage({ setIsSignedUp }) {
   const { value, reset, bindings } = useInput("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  function LogIn() {
+    function Authenticate() {
+      return value == "db" && password == "db";
+    }
+    if (Authenticate()) {
+      console.log(value);
+      console.log(password);
+      console.log("Login clicked");
+      setIsSignedUp(true);
+      return navigate("/");
+    } else {
+      alert("Please input correct email and password");
+    }
+  }
+
   const validateEmail = (value) => {
     return value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
   };
@@ -26,7 +44,7 @@ function LogInPage() {
       };
     const isValid = validateEmail(value);
     return {
-      text: isValid ? "Correct email" : "Enter a valid email",
+      text: isValid ? "Valid email" : "Enter a valid email",
       color: isValid ? "success" : "error",
     };
   }, [value]);
@@ -63,9 +81,11 @@ function LogInPage() {
             type="password"
             labelPlaceholder="Password"
             style={S.SectionField}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Spacer y={1} />
-          <Button style={S.Button} auto>
+          <Button style={S.Button} auto onPress={LogIn}>
             Log In
           </Button>
           <Col>

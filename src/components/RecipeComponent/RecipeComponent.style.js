@@ -9,6 +9,7 @@ export const Image = {
   width: "533px",
   height: "437px",
   borderRadius: "15px",
+  background: "#EDEBEB",
 };
 export const MenuName = {
   fontSize: "48px",

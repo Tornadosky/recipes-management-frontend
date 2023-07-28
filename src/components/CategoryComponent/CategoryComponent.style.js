@@ -8,9 +8,10 @@ export const Container = {
   display: "inline-block",
 };
 export const Image = {
-  width: "533px",
+  width: "534px",
   height: "403px",
   borderRadius: "15px 15px 0px 0px",
+  background: "#EDEBEB",
 };
 
 export const CategoryName = {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Text, Button, Link } from "@nextui-org/react";
 import * as S from "./Navbar.styled";
 import { BsHeartFill } from "react-icons/bs";
@@ -26,7 +26,7 @@ const NavbarComponent = ({ isSignedUp, title }) => {
         </Navbar.Item>
         <Navbar.Item>
           {isSignedUp ? (
-            "UserName"
+            "Username"
           ) : (
             <Button
               auto
