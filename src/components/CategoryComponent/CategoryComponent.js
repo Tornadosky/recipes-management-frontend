@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./CategoryComponent.style";
-import imagesample from "../../assets/greek.png";
+import imagesample from "../../assets/avatar.png";
 
 const CategoryComponent = () => {
   return (
@@ -10,7 +10,7 @@ const CategoryComponent = () => {
         url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Open+Sans:wght@300&family=Poppins&family=Praise&display=swap');
       </style>
       <img style={S.Image} src={imagesample} />
-      <p style={S.CategoryName}>Category</p>
+      <p style={S.CategoryName}>Breakfast</p>
     </div>
   );
 };
