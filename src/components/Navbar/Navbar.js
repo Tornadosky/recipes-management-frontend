@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Navbar, Text, Button, Link } from "@nextui-org/react";
-import * as S from "./Navbar.styled";
+import { Button, Link, Navbar, Text } from "@nextui-org/react";
+import React from "react";
 import { BsHeartFill } from "react-icons/bs";
+import * as S from "./Navbar.styled";
 
-const NavbarComponent = ({ isSignedUp, title }) => {
+const NavbarComponent = ({ isSignedUp, user }) => {
   return (
     <Navbar css={S.NavbarStyles} variant="static">
       <Navbar.Brand>
@@ -26,7 +26,7 @@ const NavbarComponent = ({ isSignedUp, title }) => {
         </Navbar.Item>
         <Navbar.Item>
           {isSignedUp ? (
-            "Username"
+            user
           ) : (
             <Button
               auto

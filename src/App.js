@@ -1,33 +1,25 @@
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LogInPage from "./components/LogIn/LogIn";
 import NavbarComponent from "./components/Navbar/Navbar";
+import SignUpPage from "./components/SignUp/SignUp";
+import CategoryEachPage from "./pages/CategoryEachPage";
 import CategoryPage from "./pages/CategoryPage";
 import FoodTypePage from "./pages/FoodTypePage";
 import Home from "./pages/HomePage";
-import LogInPage from "./components/LogIn/LogIn";
-import SignUpPage from "./components/SignUp/SignUp";
-import CategoryEachPage from "./pages/CategoryEachPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useEffect, useState } from "react";
 
 function App() {
   const [isSignedUp, setIsSignedUp] = useState(false);
-
+  const [user, setUser] = useState("");
   useEffect(() => {
     setIsSignedUp(JSON.parse(window.localStorage.getItem("isSignedUp")));
+    setUser(window.localStorage.getItem("user"));
   }, []);
 
   useEffect(() => {
     window.localStorage.setItem("isSignedUp", isSignedUp);
-  }, [isSignedUp]);
-
-  // useEffect(() => {
-  //   const cleanup = () => {
-  //     alert("woo");
-  //   };
-  //   window.addEventListener("beforeunload", cleanup);
-  //   return () => {
-  //     window.removeEventListener("beforeunload", cleanup);
-  //   };
-  // }, []);
+    window.localStorage.setItem("user", user);
+  }, [isSignedUp, user]);
 
   return (
     <div className="App">
@@ -38,7 +30,7 @@ function App() {
             exact
             element={
               <>
-                <NavbarComponent isSignedUp={isSignedUp} />
+                <NavbarComponent isSignedUp={isSignedUp} user={user} />
                 <Home />
               </>
             }
@@ -48,7 +40,7 @@ function App() {
             exact
             element={
               <>
-                <NavbarComponent isSignedUp={isSignedUp} />
+                <NavbarComponent isSignedUp={isSignedUp} user={user} />
                 <CategoryPage />
               </>
             }
@@ -58,7 +50,7 @@ function App() {
             exact
             element={
               <>
-                <NavbarComponent isSignedUp={isSignedUp} />
+                <NavbarComponent isSignedUp={isSignedUp} user={user} />
                 <FoodTypePage />
               </>
             }
@@ -68,7 +60,7 @@ function App() {
             exact
             element={
               <>
-                <NavbarComponent isSignedUp={isSignedUp} />
+                <NavbarComponent isSignedUp={isSignedUp} user={user} />
                 <CategoryEachPage />
               </>
             }
@@ -76,9 +68,17 @@ function App() {
           <Route
             path="/login"
             exact
-            element={<LogInPage setIsSignedUp={setIsSignedUp} />}
+            element={
+              <LogInPage setIsSignedUp={setIsSignedUp} setUser={setUser} />
+            }
           />
-          <Route path="/signup" exact element={<SignUpPage />} />
+          <Route
+            path="/signup"
+            exact
+            element={
+              <SignUpPage setIsSignedUp={setIsSignedUp} setUser={setUser} />
+            }
+          />
           <Route path="/" render={() => <div>404</div>} />
         </Routes>
       </BrowserRouter>

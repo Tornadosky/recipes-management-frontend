@@ -1,53 +1,44 @@
+import {
+  Button,
+  Col,
+  Image,
+  Input,
+  Row,
+  Spacer,
+  Text,
+} from "@nextui-org/react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as S from "../SignUp/SignUp.styled";
-import {
-  Image,
-  Row,
-  Col,
-  Text,
-  Input,
-  useInput,
-  Spacer,
-  Button,
-} from "@nextui-org/react";
 import BurgerImage from "../../assets/burg.png";
+import * as S from "../SignUp/SignUp.styled";
 
-function LogInPage({ setIsSignedUp }) {
-  const { value, reset, bindings } = useInput("");
+function LogInPage({ setIsSignedUp, setUser }) {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  function LogIn() {
-    function Authenticate() {
-      return value == "db" && password == "db";
-    }
-    if (Authenticate()) {
-      console.log(value);
-      console.log(password);
-      console.log("Login clicked");
+  async function LogIn() {
+    console.log(username, password);
+    let item = { username, password };
+    let result = await fetch("http://localhost:8080/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(item),
+    });
+    if (result.status === 200) {
+      result = await result.json();
+      console.log(result);
+      localStorage.setItem("user-info", JSON.stringify(result));
       setIsSignedUp(true);
-      return navigate("/");
+      setUser(username);
+      navigate("/");
     } else {
       alert("Please input correct email and password");
     }
   }
 
-  const validateEmail = (value) => {
-    return value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
-  };
-
-  const helper = React.useMemo(() => {
-    if (!value)
-      return {
-        text: "",
-        color: "",
-      };
-    const isValid = validateEmail(value);
-    return {
-      text: isValid ? "Valid email" : "Enter a valid email",
-      color: isValid ? "success" : "error",
-    };
-  }, [value]);
   return (
     <div style={S.SignUpWrapper}>
       <style>
@@ -66,14 +57,11 @@ function LogInPage({ setIsSignedUp }) {
           </Text>
           <Spacer y={2} />
           <Input
-            {...bindings}
             clearable
-            onClearClick={reset}
-            helperColor={helper.color}
-            helperText={helper.text}
-            type="email"
-            labelPlaceholder="Email"
+            type="username"
+            labelPlaceholder="Username"
             style={S.SectionField}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <Spacer y={2} />
           <Input
