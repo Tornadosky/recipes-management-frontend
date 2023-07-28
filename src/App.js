@@ -1,9 +1,10 @@
 import NavbarComponent from "./components/Navbar/Navbar";
-import Categories from "./pages/CategoriesPage";
-import FoodType from "./pages/FoodTypePage";
+import CategoryPage from "./pages/CategoryPage";
+import FoodTypePage from "./pages/FoodTypePage";
 import Home from "./pages/HomePage";
 import LogInPage from "./components/LogIn/LogIn";
 import SignUpPage from "./components/SignUp/SignUp";
+import CategoryEachPage from "./pages/CategoryEachPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
             element={
               <>
                 <NavbarComponent />
-                <Categories />
+                <CategoryPage />
               </>
             }
           />
@@ -37,7 +38,17 @@ function App() {
             element={
               <>
                 <NavbarComponent />
-                <FoodType />
+                <FoodTypePage />
+              </>
+            }
+          />
+          <Route
+            path="/eachcategory"
+            exact
+            element={
+              <>
+                <NavbarComponent />
+                <CategoryEachPage />
               </>
             }
           />
