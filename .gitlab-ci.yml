@@ -1,5 +1,6 @@
 stages:
   - test
+  - container
 
 unit-test:
   image: node:latest
@@ -17,3 +18,18 @@ unit-test:
     reports:
       junit:
         - junit.xml
+
+build_image:
+  stage: container
+  image: docker:20.10.16
+  services: 
+    - docker:20.10.16-dind
+
+  before_script:
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS 
+  
+  script:
+    - docker build -t vladislavveselov/veselovrepo:front_recipes-app-1.0 .
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
+    - docker push vladislavveselov/veselovrepo:front_recipes-app-1.0
+

@@ -18,6 +18,6 @@ export const CategoryName = {
   fontSize: "48px",
   color: "#FFFFFF",
   position: "relative",
-  bottom: "20px",
+  top: "-55px",
   textAlign: "center",
 };
