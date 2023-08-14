@@ -1,0 +1,66 @@
+{
+  "id": "6467d38aa4725c2a87bb5209",
+  "name": "Banana Pudding",
+  "imageURL": "https://baking-academy.ru/upload/resize_cache/iblock/6da/1200_1060_1/6da87671d464216749587fb04854dddb.jpg",
+  "ingredients": [
+    {
+      "name": "sugar",
+      "quantity": "1",
+      "units": "cup"
+    },
+    {
+      "name": "all-purpose flour",
+      "quantity": "0.5",
+      "units": "cup"
+    },
+    {
+      "name": "salt",
+      "quantity": "0.5",
+      "units": "tablespoon"
+    },
+    {
+      "name": "milk",
+      "quantity": "2",
+      "units": "cup"
+    },
+    {
+      "name": "egg yolks",
+      "quantity": "4",
+      "units": ""
+    },
+    {
+      "name": "vanilla extract",
+      "quantity": "2",
+      "units": "teaspoon"
+    },
+    {
+      "name": "ripe bananas, sliced",
+      "quantity": "5",
+      "units": ""
+    },
+    {
+      "name": "vanilla wafers",
+      "quantity": "1",
+      "units": "piece"
+    },
+    {
+      "name": "heavy cream",
+      "quantity": "1",
+      "units": "cup"
+    }
+  ],
+  "steps": [
+    "In a medium saucepan, whisk together sugar, flour, and salt.",
+    "Gradually whisk in milk and egg yolks.",
+    "Cook over medium heat, whisking constantly, until mixture thickens.",
+    "Remove from heat and stir in vanilla extract.",
+    "In a 9x13 inch dish, layer vanilla wafers, sliced bananas, and pudding.",
+    "Repeat layers until all ingredients are used.",
+    "In a large bowl, whip heavy cream until stiff peaks form.",
+    "Spread whipped cream over the top of the pudding.",
+    "Refrigerate for at least 2 hours before serving."
+  ],
+  "categories": ["Dessert"],
+  "types": ["pudding", "banana"],
+  "preparationTime": 120
+}

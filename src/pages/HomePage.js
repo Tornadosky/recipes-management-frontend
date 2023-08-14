@@ -1,9 +1,9 @@
-import React from "react";
-import Footer from "../components/Footer/Footer";
-import CardCarousel from "../components/CardCarousel/CardCarousel";
-import TextImage from "../components/TextImage/TextImage";
-import StakeImage from "../assets/food_home_page.png";
 import { Col, Row } from "@nextui-org/react";
+import React from "react";
+import StakeImage from "../assets/food_home_page.png";
+import CardCarousel from "../components/CardCarousel/CardCarousel";
+import Footer from "../components/Footer/Footer";
+import TextImage from "../components/TextImage/TextImage";
 
 const Home = () => {
   return (

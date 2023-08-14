@@ -1,8 +1,7 @@
+import { Grid, Link, Row } from "@nextui-org/react";
 import React from "react";
-import Footer from "../components/Footer/Footer";
 import CategoryComponent from "../components/CategoryComponent/CategoryComponent";
 import SearchBar from "../components/SearchBar/SearchBar";
-import { Row, Grid, Link } from "@nextui-org/react";
 
 const FoodTypePage = () => {
   return (
@@ -34,7 +33,6 @@ const FoodTypePage = () => {
           </Link>
         </Row>
       </Grid>
-      <Footer />
     </Grid.Container>
   );
 };

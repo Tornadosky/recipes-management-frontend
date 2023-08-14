@@ -3,18 +3,12 @@ import React from "react";
 import RecipeComponent from "../components/RecipeComponent/RecipeComponent";
 import SearchBar from "../components/SearchBar/SearchBar";
 
-const CategoryEachPage = () => {
+const ShowRecipePage = (searchKey) => {
   return (
     <Grid.Container gap={2} justify="center">
       <Grid>
-        <p style={{ "font-size": "50px", "text-align": "center" }}>
-          Explore{" "}
-          <span style={{ "font-weight": "700", color: "#F72D57" }}>
-            Chosen Category
-          </span>
-        </p>
         <Row>
-          <SearchBar />
+          <SearchBar searchKey={searchKey} />
         </Row>
         <Row>
           <RecipeComponent />
@@ -29,4 +23,4 @@ const CategoryEachPage = () => {
   );
 };
 
-export default CategoryEachPage;
+export default ShowRecipePage;
