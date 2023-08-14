@@ -10,16 +10,13 @@ import Home from "./pages/HomePage";
 
 function App() {
   const [isSignedUp, setIsSignedUp] = useState(false);
-  const [user, setUser] = useState("");
   useEffect(() => {
-    setIsSignedUp(JSON.parse(window.localStorage.getItem("isSignedUp")));
-    setUser(window.localStorage.getItem("user"));
+    setIsSignedUp(JSON.parse(localStorage.getItem("isSignedUp")));
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem("isSignedUp", isSignedUp);
-    window.localStorage.setItem("user", user);
-  }, [isSignedUp, user]);
+    localStorage.setItem("isSignedUp", isSignedUp);
+  }, [isSignedUp]);
 
   return (
     <div className="App">
@@ -30,7 +27,10 @@ function App() {
             exact
             element={
               <>
-                <NavbarComponent isSignedUp={isSignedUp} user={user} />
+                <NavbarComponent
+                  isSignedUp={isSignedUp}
+                  setIsSignedUp={setIsSignedUp}
+                />
                 <Home />
               </>
             }
@@ -40,7 +40,10 @@ function App() {
             exact
             element={
               <>
-                <NavbarComponent isSignedUp={isSignedUp} user={user} />
+                <NavbarComponent
+                  isSignedUp={isSignedUp}
+                  setIsSignedUp={setIsSignedUp}
+                />{" "}
                 <CategoryPage />
               </>
             }
@@ -50,7 +53,10 @@ function App() {
             exact
             element={
               <>
-                <NavbarComponent isSignedUp={isSignedUp} user={user} />
+                <NavbarComponent
+                  isSignedUp={isSignedUp}
+                  setIsSignedUp={setIsSignedUp}
+                />{" "}
                 <FoodTypePage />
               </>
             }
@@ -60,7 +66,10 @@ function App() {
             exact
             element={
               <>
-                <NavbarComponent isSignedUp={isSignedUp} user={user} />
+                <NavbarComponent
+                  isSignedUp={isSignedUp}
+                  setIsSignedUp={setIsSignedUp}
+                />
                 <CategoryEachPage />
               </>
             }
@@ -68,16 +77,12 @@ function App() {
           <Route
             path="/login"
             exact
-            element={
-              <LogInPage setIsSignedUp={setIsSignedUp} setUser={setUser} />
-            }
+            element={<LogInPage setIsSignedUp={setIsSignedUp} />}
           />
           <Route
             path="/signup"
             exact
-            element={
-              <SignUpPage setIsSignedUp={setIsSignedUp} setUser={setUser} />
-            }
+            element={<SignUpPage setIsSignedUp={setIsSignedUp} />}
           />
           <Route path="/" render={() => <div>404</div>} />
         </Routes>

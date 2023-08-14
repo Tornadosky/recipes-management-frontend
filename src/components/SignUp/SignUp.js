@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import BurgerImage from "../../assets/burg.png";
 import * as S from "./SignUp.styled";
 
-function SignUpPage({ setIsSignedUp, setUser }) {
+function SignUpPage({ setIsSignedUp }) {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -42,7 +42,7 @@ function SignUpPage({ setIsSignedUp, setUser }) {
 
       if (result.status === 200) {
         setIsSignedUp(true);
-        setUser(username);
+        localStorage.setItem("userinfo", JSON.stringify(item));
         navigate("/");
       }
     }

@@ -1,9 +1,10 @@
 import { Button, Link, Navbar, Text } from "@nextui-org/react";
 import React from "react";
 import { BsHeartFill } from "react-icons/bs";
+import UsernameDropdown from "../UsernameDropdown/UsernameDropdown";
 import * as S from "./Navbar.styled";
 
-const NavbarComponent = ({ isSignedUp, user }) => {
+const NavbarComponent = ({ isSignedUp, setIsSignedUp }) => {
   return (
     <Navbar css={S.NavbarStyles} variant="static">
       <Navbar.Brand>
@@ -26,7 +27,7 @@ const NavbarComponent = ({ isSignedUp, user }) => {
         </Navbar.Item>
         <Navbar.Item>
           {isSignedUp ? (
-            user
+            <UsernameDropdown setIsSignedUp={setIsSignedUp} />
           ) : (
             <Button
               auto

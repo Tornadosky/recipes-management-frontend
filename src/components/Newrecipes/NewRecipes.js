@@ -16,6 +16,17 @@ import { BsPlus } from "react-icons/bs";
 const NewRecipes = () => {
   // image upload
   const [image, setImage] = useState(PlaceholderImage);
+  const [instruction, setInstruction] = useState("");
+  const [addInstruction, setAddInstruction] = useState([]);
+  const [category, setCategory] = useState(new Set(["Select one.."]));
+  const [foodType, setFoodType] = useState(new Set(["Select one.."]));
+  const [portion, setPortion] = useState(new Set(["Select one.."]));
+  const [ingredients, setIngredients] = useState("");
+  const [addIngredients, setAddIngredients] = useState([]);
+  const [amount, setAmount] = useState("");
+  const [addAmount, setAddAmount] = useState([]);
+
+  //image upload
   const handleImageUpload = (e) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -23,11 +34,7 @@ const NewRecipes = () => {
     };
     reader.readAsDataURL(e.target.files[0]);
   };
-
-  const [category, setCategory] = useState(new Set(["Select one.."]));
-  const [foodType, setFoodType] = useState(new Set(["Select one.."]));
-  const [portion, setPortion] = useState(new Set(["Select one.."]));
-
+  //dropdown selection
   const selectedCategoryValue = useMemo(
     () => Array.from(category).join(", ").replaceAll("_", " "),
     [category]
@@ -42,9 +49,6 @@ const NewRecipes = () => {
   );
 
   //for adding ingredients and instructions
-  const [ingredients, setIngredients] = useState("");
-  const [addIngredients, setAddIngredients] = useState([]);
-
   const handleIngredientsChange = (e) => {
     setIngredients(e.target.value);
   };
@@ -57,9 +61,6 @@ const NewRecipes = () => {
   };
 
   // add amount
-  const [amount, setAmount] = useState("");
-  const [addAmount, setAddAmount] = useState([]);
-
   const handleAddAmountChange = (e) => {
     setAmount(e.target.value);
   };
@@ -70,9 +71,6 @@ const NewRecipes = () => {
   };
 
   //add instructions
-  const [instruction, setInstruction] = useState("");
-  const [addInstruction, setAddInstruction] = useState([]);
-
   const handleInstructionChange = (e) => {
     setInstruction(e.target.value);
   };
@@ -84,8 +82,36 @@ const NewRecipes = () => {
     }
   };
 
+  //save all data
+  const SaveData = (event) => {
+    event.preventDefault();
+    const data = {
+      image: image,
+      category: category,
+      foodType: foodType,
+      amount: amount,
+      instruction: instruction,
+      addInstruction: addInstruction,
+      addIngredients: addIngredients,
+      portion: portion,
+      ingredients: ingredients,
+      addAmount: addAmount,
+    };
+    console.log(data);
+    setImage("");
+    setCategory("");
+    setFoodType("");
+    setAmount("");
+    setInstruction("");
+    setAddInstruction("");
+    setAddIngredients("");
+    setPortion("");
+    setIngredients("");
+    setAddAmount("");
+  };
+
   return (
-    <Row justify="center">
+    <form onSubmit={SaveData}>
       <Col css={S.NewRecipesWrapper}>
         <Row justify="center">
           <Text size="$3xl" h3>
@@ -350,6 +376,7 @@ const NewRecipes = () => {
         </Col>
         <Row>
           <Button
+            type="submit"
             rounded
             size="auto"
             color="error"
@@ -359,7 +386,7 @@ const NewRecipes = () => {
           </Button>
         </Row>
       </Col>
-    </Row>
+    </form>
   );
 };
 

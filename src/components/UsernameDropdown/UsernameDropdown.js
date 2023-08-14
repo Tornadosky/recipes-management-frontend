@@ -1,10 +1,18 @@
+import { Button, Dropdown, Grid, Text } from "@nextui-org/react";
 import React from "react";
-import { Grid, Dropdown, Text } from "@nextui-org/react";
-import { FaRegListAlt } from "react-icons/fa";
 import { AiFillHeart } from "react-icons/ai";
 import { BsPen } from "react-icons/bs";
+import { FaRegListAlt } from "react-icons/fa";
 
-const UsernameDropdown = () => {
+const UsernameDropdown = ({ setIsSignedUp }) => {
+  const userinfo = JSON.parse(localStorage.getItem("userinfo"));
+  const username = userinfo.username;
+  const email = userinfo["email"];
+
+  function LogOut() {
+    localStorage.setItem("userinfo", "");
+    setIsSignedUp(false);
+  }
   return (
     <Grid.Container justify="flex-start" gap={2}>
       <Grid>
@@ -19,7 +27,7 @@ const UsernameDropdown = () => {
                 cursor: "pointer",
               }}
             >
-              Username
+              {username}
             </Text>
           </Dropdown.Trigger>
           <Dropdown.Menu
@@ -42,12 +50,12 @@ const UsernameDropdown = () => {
                   justifyContent: "space-between",
                 }}
               >
-                Username
+                {username}
                 <BsPen style={{ fontSize: "20" }} />
               </Text>
 
               <Text color="inherit" css={{ d: "flex" }}>
-                username@example.com
+                {email}
               </Text>
             </Dropdown.Item>
             <Dropdown.Item
@@ -68,12 +76,8 @@ const UsernameDropdown = () => {
               My Favorites
             </Dropdown.Item>
 
-            <Dropdown.Item
-              key="logout"
-              color="error"
-              css={{ marginTop: "5rem" }}
-            >
-              Log Out
+            <Dropdown.Item color="error" css={{ marginTop: "1rem" }}>
+              <Button onPress={LogOut}>Log Out</Button>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

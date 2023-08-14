@@ -30,9 +30,8 @@ function LogInPage({ setIsSignedUp, setUser }) {
     if (result.status === 200) {
       result = await result.json();
       console.log(result);
-      localStorage.setItem("user-info", JSON.stringify(result));
+      localStorage.setItem("userinfo", JSON.stringify(result));
       setIsSignedUp(true);
-      setUser(username);
       navigate("/");
     } else {
       alert("Please input correct email and password");
